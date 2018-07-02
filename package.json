@@ -1,0 +1,15 @@
+{
+  "name": "mock-spy-node-jasmine",
+  "version": "0.0.1",
+  "description": "mock-spy-node-jasmine",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine --config=jasmine.json"
+  },
+  "keywords": ["jasmine", "mock", "spy"],
+  "author": "Dídac García",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^3.1.0"
+  }
+}
