@@ -1,7 +1,12 @@
+/* Code to test: */
 const foo = {
 	get value() {},
 	set value(val) {}
 };
+
+// ====================================================
+
+/* Tests: */
 describe('Spy getters and setters', () => {
 
 	it('Can spy on getters', () => {
