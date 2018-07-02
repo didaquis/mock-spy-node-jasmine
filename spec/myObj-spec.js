@@ -1,4 +1,4 @@
-// Code to test:
+/* Code to test: */
 let myObj = {
 	save: function() {
 		// ...
@@ -6,16 +6,15 @@ let myObj = {
 	getQuantity: function() {
 		return 5;
 	},
-	printText: function(textToPrint) {
-		// ...
+	printUpperCaseText: function(textToPrint) {
+		return textToPrint.toUpperCase();
 	}
 }
 
 // ====================================================
 
-
-describe("Spies: myObj", () => {
-	//console.log(myObj);
+/* Tests: */
+describe("Spies: myObj save", () => {
 
 	it('Should spy on "save" method', () => {
 		let spy = spyOn(myObj, 'save');
@@ -26,6 +25,11 @@ describe("Spies: myObj", () => {
 		expect(spy).toHaveBeenCalled(); // comprobamos que el método "save" ha sido llamado.
 		expect(spy).toHaveBeenCalledTimes(1); // comprobamos el número de veces que llamamos al método "save".
 	});
+
+});
+
+
+describe("Spies: myObj getQuantity", () => {
 
 	it('Should spy on "getQuantity" method', () => {
 		let spy = spyOn(myObj, 'getQuantity').and.returnValue(10); // establecemos que el método "getQuantity" devolverá 10.
@@ -59,12 +63,24 @@ describe("Spies: myObj", () => {
 		expect(quantity).toEqual('foo'); // comprobamos que se ha lanzado un error;
 	});
 
-	it('Should be possible called "printText" method with 1 parameter', () => {
-		let spy = spyOn(myObj, 'printText');
+});
 
-		myObj.printText('foo');
-		expect(myObj.printText).toHaveBeenCalledWith('foo'); // comprobamos que podemos enviarle un argumento.
+
+describe("Spies: myObj printUpperCaseText", () => {
+
+	it('Should be possible called "printUpperCaseText" method with 1 parameter', () => {
+		let spy = spyOn(myObj, 'printUpperCaseText');
+
+		myObj.printUpperCaseText('foo');
+		expect(myObj.printUpperCaseText).toHaveBeenCalledWith('foo'); // comprobamos que podemos enviarle un argumento.
 		// En realidad, este último test nos da un falso positivo, ya que en javaScript los métodos no fallan si se les envía parámetros de más o de menos.
+	});
+
+	it('Should spy on "printUpperCaseText" call through', () => {
+		let spy = spyOn(myObj, 'printUpperCaseText').and.callThrough(); // esto nos permite llamar al método "real" en vez de al doble
+
+		expect(myObj.printUpperCaseText('bar')).toEqual('BAR'); // comprobamos que el método real devuelve el valor correcto
+		expect(spy).toHaveBeenCalled(); // comprobamos que el método "printUpperCaseText" del objeto real ha sido llamado.
 	});
 
 });
