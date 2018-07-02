@@ -14,7 +14,7 @@ let myObj = {
 // ====================================================
 
 
-describe("Spies", () => {
+describe("Spies: myObj", () => {
 	//console.log(myObj);
 
 	it('Should spy on "save" method', () => {
@@ -36,15 +36,27 @@ describe("Spies", () => {
 		let spy = spyOn(myObj, 'getQuantity').and.callFake( () => {
 			//console.log('returning 20');
 			return 20;
-		});
+		}); // generamos una función falsa en vez de usar la función real.
 		expect(myObj.getQuantity()).toEqual(20); // comprobamos que devuelve 20
 	});
 
 	it('Should spy on "getQuantity" call through', () => {
 		let spy = spyOn(myObj, 'getQuantity').and.callThrough(); // esto nos permite llamar al método "real" en vez de al doble
-		
+
 		expect(myObj.getQuantity()).toEqual(5); // comprobamos que el método real devuelve 5
 		expect(spy).toHaveBeenCalled(); // comprobamos que el método "getQuantity" del objeto real ha sido llamado.
+	});
+
+	it('Should spy on "getQuantity" throw', () => {
+		let spy = spyOn(myObj, 'getQuantity').and.throwError( new Error('problem') );
+
+		let quantity;
+		try {
+			quantity = myObj.getQuantity();
+		} catch (error) {
+			quantity = 'foo';
+		}
+		expect(quantity).toEqual('foo'); // comprobamos que se ha lanzado un error;
 	});
 
 	it('Should be possible called "printText" method with 1 parameter', () => {
