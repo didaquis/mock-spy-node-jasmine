@@ -1,8 +1,8 @@
-const { foo, bar } = require('./utils');
+const utils = require('./utils');
 
 const bizz = () => {
-    let fooResult = foo()
-    return bar(fooResult)
+    let fooResult = utils.foo()
+    return utils.bar(fooResult)
 }
 
 module.exports = { bizz }

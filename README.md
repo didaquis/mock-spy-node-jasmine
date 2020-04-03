@@ -22,3 +22,8 @@ Se comportan como los spies, pero además reemplazan alguna funcionalidad origin
 
 > Este tipo de artilugios -los spies, stubs, fakes, mocks y demás- reciben el nombre de dobles, porque al igual que los dobles de las películas reemplazan al actor principal.
 
+-------
+
+## Utilidades: 
+* https://www.npmjs.com/package/rewire
+* https://www.npmjs.com/package/mockery
