@@ -24,6 +24,12 @@ Se comportan como los spies, pero además reemplazan alguna funcionalidad origin
 
 -------
 
+## Given When Then // Arrange Act Assert
+
+![gwt](./docs-assets/gwt.png)
+
+-------
+
 ## Utilidades: 
 * https://www.npmjs.com/package/rewire
 * https://www.npmjs.com/package/mockery
